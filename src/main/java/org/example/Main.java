@@ -5,12 +5,22 @@ import org.example.exception.ApplicationException;
 
 import java.util.Scanner;
 
+/**
+ * The Main App class.
+ */
 public class Main {
 
+    /**
+     * Utility method to simulate clearing out the console. This also work with IDE consoles.
+     */
     private static void clearConsole() {
         System.out.println(System.lineSeparator().repeat(50));
     }
 
+
+    /**
+     * Prints the main menu into the console.
+     */
     private static void printMainMenu() {
         clearConsole();
         System.out.println("===== INTEGER - ROMAN NUMBER CONVERTER ======\n");
@@ -21,6 +31,11 @@ public class Main {
         System.out.print("Option: ");
     }
 
+    /**
+     * Prints the integer to roman conversion menu and shows the resultant conversion.
+     *
+     * @param scanner An already created Scanner instance to handle user input
+     */
     private static void printIntegerToRomanMenu(Scanner scanner) {
         clearConsole();
         System.out.println("Convert Integer to Roman number\n");
@@ -45,6 +60,11 @@ public class Main {
         } while (shouldShowSubMenu);
     }
 
+    /**
+     * Prints the roman to integer conversion menu and shows the resultant conversion.
+     *
+     * @param scanner An already created Scanner instance to handle user input
+     */
     private static void printRomanToIntegerMenu(Scanner scanner) {
         clearConsole();
         System.out.println("Sorry, this option is not currently available.\n");
