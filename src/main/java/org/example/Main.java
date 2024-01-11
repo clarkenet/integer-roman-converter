@@ -1,6 +1,7 @@
 package org.example;
 
 import org.example.converter.IntegerToRomanConverter;
+import org.example.converter.RomanToIntegerConverter;
 import org.example.exception.ApplicationException;
 
 import java.util.Scanner;
@@ -45,8 +46,8 @@ public class Main {
 
         do {
             System.out.print("Type the integer value to be converted (1 - 3000) and press Enter: ");
-            String strNumber = scanner.next();
             try {
+                String strNumber = scanner.next();
                 String romanNumber = intToRomanConverter.convertToRoman(strNumber);
                 System.out.printf("The roman number %s is: '%s'\n\n", strNumber, romanNumber);
                 System.out.println("Press any key and Enter to get back to the main menu.");
@@ -67,9 +68,26 @@ public class Main {
      */
     private static void printRomanToIntegerMenu(Scanner scanner) {
         clearConsole();
-        System.out.println("Sorry, this option is not currently available.\n");
-        System.out.println("Press any key and Enter to get back to the main menu.");
-        scanner.next();
+        System.out.println("Convert Roman to Integer number\n");
+
+        var romanToIntConverter = new RomanToIntegerConverter();
+        boolean shouldShowSubMenu = true;
+
+        do {
+            System.out.print("Type the roman value to be converted (I[1] - MMM[3000]) and press Enter: ");
+            try {
+                String strRoman = scanner.next();
+                int intValue = romanToIntConverter.convertToInteger(strRoman);
+                System.out.printf("The integer value of %s is: '%s'\n\n", strRoman.toUpperCase(), intValue);
+                System.out.println("Press any key and Enter to get back to the main menu.");
+                scanner.next();
+                shouldShowSubMenu = false;
+            } catch (ApplicationException applicationException) {
+                System.out.println(applicationException.getMessage() + "\n");
+            } catch (Exception exception) {
+                System.out.println("Something went wrong, please try again.\n");
+            }
+        } while (shouldShowSubMenu);
     }
 
     public static void main(String[] args) throws InterruptedException {
