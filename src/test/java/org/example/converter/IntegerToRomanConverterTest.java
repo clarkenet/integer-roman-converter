@@ -4,16 +4,14 @@ import org.example.constants.ApplicationConstants;
 import org.example.exception.ApplicationException;
 import org.junit.jupiter.api.Test;
 
-import java.util.List;
 import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class IntegerToRomanConverterTest {
 
     private final IntegerToRomanConverter integerToRomanConverter = new IntegerToRomanConverter();
-    private final String NOT_EXPECTED_ERROR_MSG_DSC = "Error message does not match";
-    private final String NOT_EXPECTED_EXCEPTION_DSC = "Expected exception does not match";
 
     @Test
     void shouldConvertToRomanWhenPassingValidInteger() {
@@ -32,25 +30,13 @@ class IntegerToRomanConverterTest {
         });
     }
 
+    // Just checking that the exception is getting propagated from the validator method
     @Test
-    void shouldThrowExceptionWhenPassingIntegerOutOfSupportedRange() {
-        var numbersToTest = List.of("-1", "0", "3001");
-
-        numbersToTest.forEach(number -> {
-            var exception = assertThrows(ApplicationException.class,
-                    () -> integerToRomanConverter.convertToRoman(number),
-                    NOT_EXPECTED_EXCEPTION_DSC);
-
-            assertEquals(ApplicationConstants.OUT_OF_RANGE_MSG, exception.getMessage(), NOT_EXPECTED_ERROR_MSG_DSC);
-        });
-    }
-
-    @Test
-    void shouldThrowExceptionWhenPassingInvalidInteger() {
+    void shouldThrowExceptionWhenPassingInvalidValue() {
         var exception = assertThrows(ApplicationException.class,
                 () -> integerToRomanConverter.convertToRoman("Invalid"),
-                NOT_EXPECTED_EXCEPTION_DSC);
+                "Expected exception does not match");
 
-        assertEquals(ApplicationConstants.INVALID_INT_NUMBER_MSG, exception.getMessage(), NOT_EXPECTED_ERROR_MSG_DSC);
+        assertEquals(ApplicationConstants.INVALID_INT_NUMBER_MSG, exception.getMessage(), "Error message does not match");
     }
 }

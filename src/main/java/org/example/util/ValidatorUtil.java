@@ -12,6 +12,5 @@ public class ValidatorUtil {
         } catch (NumberFormatException nfe) {
             throw new ApplicationException(ApplicationConstants.INVALID_INT_NUMBER_MSG);
         }
-
     }
 }
