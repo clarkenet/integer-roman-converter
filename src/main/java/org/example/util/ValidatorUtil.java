@@ -15,7 +15,7 @@ public class ValidatorUtil {
      */
     public static int validateAndGetInt(String stringNumber) {
         try {
-            var number = Integer.parseInt(stringNumber);
+            var number = Integer.parseInt(stringNumber.trim());
             if (number <= 0 || number > 3000) throw new ApplicationException(ApplicationConstants.OUT_OF_RANGE_MSG);
             return number;
         } catch (NumberFormatException nfe) {

@@ -19,6 +19,7 @@ class ValidatorUtilTest {
     void shouldReturnIntegerWhenPassingValidIntegerString() {
         var stringsToTest = Map.ofEntries(
                 Map.entry("1", 1),
+                Map.entry("  299  ", 299),
                 Map.entry("589", 589),
                 Map.entry("3000", 3000)
         );

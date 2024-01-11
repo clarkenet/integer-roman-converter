@@ -54,7 +54,7 @@ public class IntegerToRomanConverter {
         StringBuilder result = new StringBuilder();
 
         // Convert each number to its corresponding roman value and add it to the resultant string
-        for (int i = 0; i < stringNumber.length(); i++) {
+        for (int i = 0; i < stringNumber.trim().length(); i++) {
             // Get the power of 10 per iteration (10^0 = 1, 10^1 = 10, 10^2 = 100, 10^3 = 1000)
             int factor = (int) Math.pow(10, i);
             // Get the number at the right position

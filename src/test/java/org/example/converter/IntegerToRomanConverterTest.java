@@ -17,7 +17,7 @@ class IntegerToRomanConverterTest {
     void shouldConvertToRomanWhenPassingValidInteger() {
         var numbersToTest = Map.ofEntries(
                 Map.entry("524", "DXXIV"),
-                Map.entry("689", "DCLXXXIX"),
+                Map.entry("  689  ", "DCLXXXIX"),
                 Map.entry("1009", "MIX"),
                 Map.entry("2498", "MMCDXCVIII"),
                 Map.entry("2891", "MMDCCCXCI"),
