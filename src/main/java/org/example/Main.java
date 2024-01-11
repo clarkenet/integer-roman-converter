@@ -45,8 +45,11 @@ public class Main {
         } while (shouldShowSubMenu);
     }
 
-    private static void printRomanToIntegerMenu() {
-        System.out.println("Option 2 selected\n");
+    private static void printRomanToIntegerMenu(Scanner scanner) {
+        clearConsole();
+        System.out.println("Sorry, this option is not currently available.\n");
+        System.out.println("Press any key and Enter to get back to the main menu.");
+        scanner.next();
     }
 
     public static void main(String[] args) throws InterruptedException {
@@ -59,7 +62,7 @@ public class Main {
 
             switch (option) {
                 case "1" -> printIntegerToRomanMenu(scanner);
-                case "2" -> printRomanToIntegerMenu();
+                case "2" -> printRomanToIntegerMenu(scanner);
                 case "0" -> {
                     System.out.println("Have a good day!");
                     Thread.sleep(1000);
